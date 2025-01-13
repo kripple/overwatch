@@ -1,0 +1,61 @@
+// import { HttpResponse, delay, http, passthrough } from 'msw';
+
+// import { ErrorResponse } from '@/api/errorResponse';
+// import { imageData } from '@/data/avatar';
+// import { isPage, pages } from '@/data/pages';
+// import { profile } from '@/data/profile';
+// import { repos } from '@/data/repos';
+// import { toArrayBuffer } from '@/utils/toArrayBuffer';
+
+import { delay, http, passthrough } from 'msw';
+
+const enable: { [key: string]: boolean } = {
+  // rateLimit: true,
+  // infiniteLoading: true,
+  passthrough: true,
+};
+
+const passthroughHandler = http.all('*', () => {
+  console.log('[MSW] Passthrough enabled.');
+  return passthrough();
+});
+
+export const handlers = (() => {
+  const items = [
+    http.all('*', async () => {
+      await delay(enable.infiniteLoading ? 'infinite' : 'real');
+    }),
+
+    // http.get('https://api.github.com/users/:username', () => {
+    //   return enable.rateLimit
+    //     ? ErrorResponse.RateLimit()
+    //     : HttpResponse.json(profile);
+    // }),
+
+    // http.get('https://api.github.com/users/:username/repos', ({ request }) => {
+    //   if (enable.rateLimit) return ErrorResponse.RateLimit();
+
+    //   const url = new URL(request.url); // search params
+    //   const page = url.searchParams.get('page');
+    //   if (!isPage(page)) return ErrorResponse.NotFound();
+
+    //   const currentPage = pages[page];
+    //   const itemsPerPage = url.searchParams.get('per_page') || '0';
+
+    //   if (page === '1' && parseInt(itemsPerPage) > currentPage.length) {
+    //     return HttpResponse.json(Object.values(repos));
+    //   } else {
+    //     return HttpResponse.json(pages[page]);
+    //   }
+    // }),
+
+    // http.get('https://avatars.githubusercontent.com/u/11916341', () => {
+    //   if (enable.rateLimit) return ErrorResponse.RateLimit();
+    //   return HttpResponse.arrayBuffer(toArrayBuffer(imageData));
+    // }),
+  ];
+  if (enable.passthrough) {
+    items.unshift(passthroughHandler);
+  }
+  return items;
+})();

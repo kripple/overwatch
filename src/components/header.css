@@ -1,0 +1,22 @@
+.header .contents {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.header .contents > * {
+  display: inline-flex;
+}
+
+.header :is(.theme-toggle-label, svg) {
+  border-radius: 50%;
+  box-sizing: content-box;
+}
+
+.header svg {
+  border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  padding: 8px;
+}

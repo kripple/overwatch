@@ -1,0 +1,48 @@
+{
+  "name": "overwatch",
+  "version": "0.0.0",
+  "author": "Kelly Ripple",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . && stylelint '**/*.css' && prettier --check .",
+    "preview": "vite preview",
+    "redraw": "tsx src/utils/redrawSvg"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.5.0",
+    "classnames": "^2.5.1",
+    "just-debounce": "^1.1.0",
+    "react": "*",
+    "react-dom": "*",
+    "react-redux": "^9.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "*",
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "@typescript-eslint/eslint-plugin": "7.16.1",
+    "@typescript-eslint/parser": "7.16.1",
+    "@vitejs/plugin-react": "*",
+    "eslint": "8.56.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-import": "2.31.0",
+    "eslint-plugin-react": "7.37.2",
+    "eslint-plugin-react-hooks": "5.0.0",
+    "eslint-plugin-react-refresh": "0.4.14",
+    "msw": "^2.7.0",
+    "pathfit": "^1.0.4",
+    "prettier": "*",
+    "sharp": "*",
+    "stylelint": "*",
+    "stylelint-order": "*",
+    "stylelint-prettier": "*",
+    "tsx": "*",
+    "typescript": "*",
+    "vite": "*"
+  },
+  "msw": {
+    "workerDirectory": "overwatch"
+  }
+}

@@ -1,0 +1,64 @@
+body {
+  font-family: var(--font);
+  font-size: var(--font-size);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+svg {
+  fill: var(--text-color);
+}
+/* svg:hover {
+  fill: var(--text-accent-color);
+} */
+svg:focus {
+  outline: none;
+}
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+/* a:hover {
+  color: var(--text-accent-color);
+} */
+/* a svg {
+  fill: var(--text-color);
+}
+a:hover svg {
+  fill: var(--text-accent-color);
+} */
+
+.app {
+  grid-template-rows: max-content 1fr max-content;
+}
+
+.footer {
+  font-size: 12px;
+  /* font-weight: 200; */
+  text-align: center;
+}
+
+.header,
+.main,
+.footer {
+  display: block;
+  padding: var(--padding);
+}
+
+/* .main-contents {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--padding) * 2);
+} */
+
+.label {
+  flex-wrap: nowrap;
+  font-weight: bold;
+  word-wrap: nowrap;
+}
+
+.label,
+.text {
+  flex-shrink: 0;
+}
